@@ -1,6 +1,6 @@
 # Architecture Decision Records (English)
 
-_Last updated: 2026-06-19 · Translated from the canonical Chinese in [`../`](../); the Chinese version is authoritative._
+_Last updated: 2026-06-23 · Translated from the canonical Chinese in [`../`](../); the Chinese version is authoritative._
 
 This folder mirrors the Chinese ADRs in [`../`](../) for international readers. Domain glossary: [`CONTEXT.md`](../../../CONTEXT.md) (Chinese, with canonical English code names per term).
 
@@ -14,6 +14,7 @@ This folder mirrors the Chinese ADRs in [`../`](../) for international readers. 
 - [0005 — Styling: Tailwind CSS v4](0005-tech-stack-tailwind-css.md)
 - [0006 — Lint/Format: Biome](0006-tech-stack-biome.md)
 - [0007 — State management: Zustand](0007-tech-stack-zustand-state.md)
+- [0009 — React Compiler (automatic memoization)](0009-tech-stack-react-compiler.md)
 
 ### Product / legal (`product-`)
 - [0008 — Planning-aid positioning](0008-product-planning-aid-positioning.md)

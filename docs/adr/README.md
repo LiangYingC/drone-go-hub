@@ -1,6 +1,6 @@
 # Architecture Decision Records
 
-_最後更新：2026-06-19_
+_最後更新：2026-06-23_
 
 本資料夾記錄 dronegohub 的架構與技術決策。每份 ADR 記下「做了什麼決定、為什麼、考慮過哪些替代案」。領域詞彙見根目錄 [`CONTEXT.md`](../../CONTEXT.md)。
 
@@ -14,6 +14,7 @@ _最後更新：2026-06-19_
 - [0005 — 樣式：Tailwind CSS v4](0005-tech-stack-tailwind-css.md)
 - [0006 — Lint/Format：Biome](0006-tech-stack-biome.md) — 取代 ESLint + Prettier。
 - [0007 — 狀態管理：Zustand](0007-tech-stack-zustand-state.md) — V0 即採用，對比 Redux/Jotai。
+- [0009 — React Compiler（自動記憶化）](0009-tech-stack-react-compiler.md) — 編譯期自動 memo，免手寫 useMemo/useCallback/memo。
 
 ### 產品／法規（`product-`）
 - [0008 — 規劃輔助定位](0008-product-planning-aid-positioning.md) — 規劃輔助非權威判定；免責不變量、localStorage 同意、匿名優先。
