@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { DisclaimerDialog } from "./DisclaimerDialog";
 import { useDisclaimerConsent } from "./useDisclaimerConsent";
 
@@ -10,8 +10,6 @@ import { useDisclaimerConsent } from "./useDisclaimerConsent";
 export function Disclaimer() {
   const { needsAcknowledgement, acknowledge } = useDisclaimerConsent();
   const [dialogOpen, setDialogOpen] = useState(false);
-  // Stable identity so the dialog's focus effect doesn't re-run on re-renders.
-  const closeDialog = useCallback(() => setDialogOpen(false), []);
 
   return (
     <>
@@ -52,7 +50,7 @@ export function Disclaimer() {
         免責聲明
       </button>
 
-      <DisclaimerDialog open={dialogOpen} onClose={closeDialog} />
+      <DisclaimerDialog open={dialogOpen} onClose={() => setDialogOpen(false)} />
     </>
   );
 }
