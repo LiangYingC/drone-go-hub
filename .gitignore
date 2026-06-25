@@ -29,8 +29,10 @@ coverage/
 # Vite local files
 *.local
 
-# Editor / IDE
-.vscode/
+# Editor / IDE — ignore personal settings, but share Biome workspace config
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
 .idea/
 *.swp
 
