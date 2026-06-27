@@ -64,6 +64,12 @@ Adopt a **tiered data-sourcing strategy**, choosing each layer's source by "regu
 - The "regulation → sourcing" table above is the **checklist for future amendments**: when the 99-13 airport distance announcement, local announcements, or national-park zoning change, the corresponding layers and sourcing must be revisited.
 - V0 still renders demo/fake data (already disclosed in ADR 0008); this ADR establishes the path to real data after V0. The airport layer, due to the semantic gap, must keep its caveat even once wired to open data.
 
+### Leads to explore later (each to be evaluated separately)
+
+- **Supplementary government layer source**: the National Land Surveying and Mapping Center (NLSC) public map service (`maps.nlsc.gov.tw`) can be evaluated as a supplementary source for government layers and basemap (related to [ADR 0004](0004-tech-stack-openfreemap-basemap.md)); licensing and layer suitability TBD.
+- **Weather data-source candidate**: weather is a separate M1 ADR; besides the Central Weather Administration (CWA), **Open-Meteo** (keyless) is a candidate worth evaluating, with licensing and data suitability left to that ADR.
+- **Architecture validation**: peer products commonly "ingest the layers once and serve them from their own infrastructure (a GIS server / backend API), rather than calling the official system at runtime," consistent with this ADR's "ETL → static GeoJSON, self-served" approach; the difference is that this product deliberately chooses legitimate ingestion sources (open data + digitized announcements).
+
 ## Sources (Taiwan official / trustworthy)
 
 Statutory text (Laws & Regulations Database, Ministry of Justice):
