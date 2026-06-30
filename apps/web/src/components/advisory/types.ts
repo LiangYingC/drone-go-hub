@@ -10,6 +10,7 @@ export type AdvisoryCategory =
   | "noFlyZone" // CAA-announced "prohibited" RPA airspace
   | "restrictedZone" // CAA-announced "restricted" (conditional) airspace
   | "airportBuffer" // distance-based restriction ring around airports
+  | "localGovZone" // municipal/county-announced RPA zone (Civil Aviation Act 99-13(2))
   | "nationalPark"; // national park
 
 /** Properties of a single advisory zone (maps to a GeoJSON Feature's properties). */
