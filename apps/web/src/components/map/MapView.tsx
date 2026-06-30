@@ -1,17 +1,20 @@
 import { MapboxOverlay } from "@deck.gl/mapbox";
 import MapGL, { useControl } from "react-map-gl/maplibre";
+import { buildAdvisoryLayers } from "@/components/advisory/advisoryLayers";
 import { BASEMAP_STYLE_URL, DECK_INTERLEAVED } from "@/config/map";
 import { useAppStore } from "@/store";
 import { useViewState } from "@/store/selectors";
 
 /**
  * deck.gl overlay mounted as a MapLibre IControl (ADR 0003: MapboxOverlay, overlaid).
- * V0 carries no layers yet — this proves the overlaid integration and stays the single
- * mount point for future business layers (no-fly polygons, saved spots). Flip
- * DECK_INTERLEAVED to switch overlaid -> interleaved without restructuring.
+ * V0 renders the advisory regulatory layers from disclosed demo data (ADR 0008);
+ * this stays the single mount point for business layers (no-fly polygons, saved
+ * spots). Flip DECK_INTERLEAVED to switch overlaid -> interleaved without restructuring.
  */
 function DeckGLOverlay() {
-  useControl(() => new MapboxOverlay({ interleaved: DECK_INTERLEAVED, layers: [] }));
+  useControl(
+    () => new MapboxOverlay({ interleaved: DECK_INTERLEAVED, layers: buildAdvisoryLayers() }),
+  );
   return null;
 }
 
