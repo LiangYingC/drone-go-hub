@@ -1,6 +1,6 @@
 # Architecture Decision Records (English)
 
-_Last updated: 2026-06-23 · Translated from the canonical Chinese in [`../`](../); the Chinese version is authoritative._
+_Last updated: 2026-06-27 · Translated from the canonical Chinese in [`../`](../); the Chinese version is authoritative._
 
 This folder mirrors the Chinese ADRs in [`../`](../) for international readers. Domain glossary: [`CONTEXT.md`](../../../CONTEXT.md) (Chinese, with canonical English code names per term).
 
@@ -18,6 +18,9 @@ This folder mirrors the Chinese ADRs in [`../`](../) for international readers. 
 
 ### Product / legal (`product-`)
 - [0008 — Planning-aid positioning](0008-product-planning-aid-positioning.md)
+
+### Data sourcing / processing (`data-`)
+- [0010 — Regulatory-layer data sourcing strategy](0010-data-regulatory-layers-sourcing.md)
 
 ## Conventions
 

@@ -1,10 +1,10 @@
 # Product positioning: planning aid, not authoritative determination (incl. disclaimer and consent record)
 
-_Last updated: 2026-06-19 · Translated from the canonical Chinese ([../0008-product-planning-aid-positioning.md](../0008-product-planning-aid-positioning.md)); the Chinese version is authoritative._
+_Last updated: 2026-06-27 · Translated from the canonical Chinese ([../0008-product-planning-aid-positioning.md](../0008-product-planning-aid-positioning.md)); the Chinese version is authoritative._
 
 ## Context
 
-The no-fly/restricted map data is reverse-engineered from the CAA frontend and may be stale. Presenting it as an "authoritative determination" would put too much liability on the site if a user follows it and breaks the law or has an accident; hence the "planning aid" positioning. If this positioning stops at copywriting it has no force, so it must become hard invariants in the data model and UI. V0 has no login, no backend, no DB.
+The no-fly/restricted map data may be stale or incomplete (for the sourcing strategy see [ADR 0010](0010-data-regulatory-layers-sourcing.md): primarily open data plus digitizing official announcements, not reverse-engineering the CAA frontend). Presenting it as an "authoritative determination" would put too much liability on the site if a user follows it and breaks the law or has an accident; hence the "planning aid" positioning. If this positioning stops at copywriting it has no force, so it must become hard invariants in the data model and UI. V0 has no login, no backend, no DB.
 
 ## Decision
 

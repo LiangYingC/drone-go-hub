@@ -1,6 +1,6 @@
 # Architecture Decision Records
 
-_最後更新：2026-06-23_
+_最後更新：2026-06-27_
 
 本資料夾記錄 dronegohub 的架構與技術決策。每份 ADR 記下「做了什麼決定、為什麼、考慮過哪些替代案」。領域詞彙見根目錄 [`CONTEXT.md`](../../CONTEXT.md)。
 
@@ -19,11 +19,14 @@ _最後更新：2026-06-23_
 ### 產品／法規（`product-`）
 - [0008 — 規劃輔助定位](0008-product-planning-aid-positioning.md) — 規劃輔助非權威判定；免責不變量、localStorage 同意、匿名優先。
 
+### 資料來源／處理（`data-`）
+- [0010 — 禁限航圖資的資料來源策略（法規驅動）](0010-data-regulatory-layers-sourcing.md) — 依法規（民航法 99-13、規則 §12、國家公園法）分層取得：開放資料 ETL（國家公園、機場）＋官方公告數位化（禁限航、地方公告區）；不反解 CAA。新增 `localGovZone`。
+
 ## 慣例
 
 ### 編號與檔名
 - `NNNN-<前綴>-<slug>.md`，依建立順序遞增。
-- 前綴分類：`tech-stack-`（基礎技術選型）、`product-`（產品/法規/定位）。出現新類別可再加前綴。
+- 前綴分類：`tech-stack-`（基礎技術選型）、`product-`（產品/法規/定位）、`data-`（資料來源/處理）。出現新類別可再加前綴。
 
 ### 格式
 - 結構：**Context → Decision → Considered Options → Consequences**。
@@ -50,8 +53,7 @@ _最後更新：2026-06-23_
 
 | 里程碑 | 待寫 ADR | 備註 |
 |---|---|---|
-| M1 | 天氣資料來源（CWA API） | 金鑰/額度 |
-| M1 | 禁航圖資 pipeline（反解 CAA → Python ETL → 靜態檔） | ⚠️ 端點待反解 → 先 `proposed`；含 TWD97→WGS84、GitHub Actions cron |
+| M1 | 天氣資料來源（CWA API；另評估 Open-Meteo） | 金鑰/額度；Open-Meteo 免金鑰，列為候選 |
 | M1 | 地點搜尋 geocoding 選型 | licensing/cost 取捨，性質類似底圖 |
 | M1 | 點面判斷用 turf.js | 為 M3 搬 PostGIS 鋪路 |
 | M1 | 適宜度評分演算法 | 原則已記於 0008，屆時定公開公式/門檻 |
