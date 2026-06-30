@@ -12,8 +12,14 @@ import { useViewState } from "@/store/selectors";
  * spots). Flip DECK_INTERLEAVED to switch overlaid -> interleaved without restructuring.
  */
 function DeckGLOverlay() {
+  // Zustand setters are stable, so building layers once in the useControl factory is safe.
+  const selectZone = useAppStore((s) => s.selectZone);
   useControl(
-    () => new MapboxOverlay({ interleaved: DECK_INTERLEAVED, layers: buildAdvisoryLayers() }),
+    () =>
+      new MapboxOverlay({
+        interleaved: DECK_INTERLEAVED,
+        layers: buildAdvisoryLayers(selectZone),
+      }),
   );
   return null;
 }

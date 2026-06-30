@@ -92,3 +92,8 @@ export const DEMO_ADVISORY_ZONES: AdvisoryFeatureCollection = {
     ),
   ],
 };
+
+/** Look up a demo zone by id (V0 only; real data will later come from the layer's data source). */
+export function getDemoZoneById(id: string): AdvisoryFeature | undefined {
+  return DEMO_ADVISORY_ZONES.features.find((f) => f.properties.id === id);
+}

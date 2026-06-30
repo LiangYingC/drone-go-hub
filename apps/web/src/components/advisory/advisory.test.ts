@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
+import { CATEGORY_LABEL } from "./categoryLabel";
 import { CATEGORY_STYLE } from "./categoryStyle";
-import { DEMO_ADVISORY_ZONES } from "./demoZones";
+import { DEMO_ADVISORY_ZONES, getDemoZoneById } from "./demoZones";
 import type { AdvisoryCategory } from "./types";
 
 const ALL_CATEGORIES: AdvisoryCategory[] = [
@@ -32,10 +33,27 @@ describe("advisory demo zones", () => {
   });
 });
 
-describe("advisory category style", () => {
+describe("advisory category presentation", () => {
   it("has a colour for every category", () => {
     for (const category of ALL_CATEGORIES) {
       expect(CATEGORY_STYLE[category]).toBeDefined();
     }
+  });
+
+  it("has a label for every category", () => {
+    for (const category of ALL_CATEGORIES) {
+      expect(CATEGORY_LABEL[category]).toBeTruthy();
+    }
+  });
+});
+
+describe("getDemoZoneById", () => {
+  it("returns the matching zone for a known id", () => {
+    const zone = getDemoZoneById("demo-nofly-1");
+    expect(zone?.properties.category).toBe("noFlyZone");
+  });
+
+  it("returns undefined for an unknown id", () => {
+    expect(getDemoZoneById("does-not-exist")).toBeUndefined();
   });
 });
