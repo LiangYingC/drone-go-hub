@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { CATEGORY_LABEL } from "./categoryLabel";
-import { CATEGORY_STYLE } from "./categoryStyle";
+import { CATEGORY_STYLE, zoneFillColor, zoneLineColor, zoneLineWidth } from "./categoryStyle";
 import { DEMO_ADVISORY_ZONES, getDemoZoneById } from "./demoZones";
 import type { AdvisoryCategory } from "./types";
 
@@ -44,6 +44,32 @@ describe("advisory category presentation", () => {
     for (const category of ALL_CATEGORIES) {
       expect(CATEGORY_LABEL[category]).toBeTruthy();
     }
+  });
+});
+
+describe("zone selection styling", () => {
+  it("returns the plain category style when not selected", () => {
+    for (const category of ALL_CATEGORIES) {
+      expect(zoneFillColor(category, false)).toEqual(CATEGORY_STYLE[category].fill);
+      expect(zoneLineColor(category, false)).toEqual(CATEGORY_STYLE[category].line);
+    }
+  });
+
+  it("emphasises the selected zone while keeping the category hue", () => {
+    for (const category of ALL_CATEGORIES) {
+      const base = CATEGORY_STYLE[category];
+      const fill = zoneFillColor(category, true);
+      const line = zoneLineColor(category, true);
+      // Selection is emphasis, not a verdict — hue must not change, only alpha.
+      expect(fill.slice(0, 3)).toEqual(base.fill.slice(0, 3));
+      expect(line.slice(0, 3)).toEqual(base.line.slice(0, 3));
+      expect(fill[3]).toBeGreaterThan(base.fill[3]);
+      expect(line[3]).toBeGreaterThanOrEqual(base.line[3]);
+    }
+  });
+
+  it("draws a thicker outline for the selected zone", () => {
+    expect(zoneLineWidth(true)).toBeGreaterThan(zoneLineWidth(false));
   });
 });
 

@@ -1,9 +1,10 @@
 import { MapboxOverlay } from "@deck.gl/mapbox";
+import { useEffect } from "react";
 import MapGL, { useControl } from "react-map-gl/maplibre";
 import { buildAdvisoryLayers } from "@/components/advisory/advisoryLayers";
 import { BASEMAP_STYLE_URL, DECK_INTERLEAVED } from "@/config/map";
 import { useAppStore } from "@/store";
-import { useViewState } from "@/store/selectors";
+import { useSelectedZoneId, useViewState } from "@/store/selectors";
 
 /**
  * deck.gl overlay mounted as a MapLibre IControl (ADR 0003: MapboxOverlay, overlaid).
@@ -12,15 +13,24 @@ import { useViewState } from "@/store/selectors";
  * spots). Flip DECK_INTERLEAVED to switch overlaid -> interleaved without restructuring.
  */
 function DeckGLOverlay() {
-  // Zustand setters are stable, so building layers once in the useControl factory is safe.
   const selectZone = useAppStore((s) => s.selectZone);
-  useControl(
-    () =>
-      new MapboxOverlay({
-        interleaved: DECK_INTERLEAVED,
-        layers: buildAdvisoryLayers(selectZone),
-      }),
-  );
+  const clearSelection = useAppStore((s) => s.clearSelection);
+  const selectedZoneId = useSelectedZoneId();
+  const overlay = useControl(() => new MapboxOverlay({ interleaved: DECK_INTERLEAVED }));
+
+  // Layers follow selection state, so push them via setProps in an effect
+  // (render stays pure — the deck.gl docs' render-time setProps predates that rule).
+  useEffect(() => {
+    overlay.setProps({
+      layers: buildAdvisoryLayers({ onZoneClick: selectZone, selectedZoneId }),
+      // Deck's root onClick only fires when no layer handled the click
+      // (the zone layer returns true), i.e. clicks on empty map area.
+      onClick: (info) => {
+        if (!info.layer) clearSelection();
+      },
+    });
+  }, [overlay, selectZone, clearSelection, selectedZoneId]);
+
   return null;
 }
 

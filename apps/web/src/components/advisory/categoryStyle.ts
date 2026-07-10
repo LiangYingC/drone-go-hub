@@ -18,3 +18,26 @@ export const CATEGORY_STYLE: Record<AdvisoryCategory, { fill: RGBA; line: RGBA }
   localGovZone: { fill: [124, 58, 237, 70], line: [124, 58, 237, 220] }, // violet
   nationalPark: { fill: [22, 130, 90, 60], line: [22, 130, 90, 210] }, // teal-green
 };
+
+/**
+ * Selected-zone emphasis: same category hue, stronger fill alpha, opaque thicker
+ * outline. The map never renders a go/no-go verdict, so a selected zone must not
+ * change colour (which could read as a different judgement) — it only gains contrast.
+ */
+const SELECTED_FILL_ALPHA = 140; // above every category default (60–80)
+const LINE_WIDTH_PX = 1.5;
+const SELECTED_LINE_WIDTH_PX = 3;
+
+export function zoneFillColor(category: AdvisoryCategory, isSelected: boolean): RGBA {
+  const [r, g, b, a] = CATEGORY_STYLE[category].fill;
+  return [r, g, b, isSelected ? SELECTED_FILL_ALPHA : a];
+}
+
+export function zoneLineColor(category: AdvisoryCategory, isSelected: boolean): RGBA {
+  const [r, g, b, a] = CATEGORY_STYLE[category].line;
+  return [r, g, b, isSelected ? 255 : a];
+}
+
+export function zoneLineWidth(isSelected: boolean): number {
+  return isSelected ? SELECTED_LINE_WIDTH_PX : LINE_WIDTH_PX;
+}
