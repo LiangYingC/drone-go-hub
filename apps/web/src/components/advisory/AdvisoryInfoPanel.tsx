@@ -1,12 +1,8 @@
 import { useAppStore } from "@/store";
 import { useSelectedZoneId } from "@/store/selectors";
 import { CATEGORY_LABEL } from "./categoryLabel";
-import { CATEGORY_STYLE, type RGBA } from "./categoryStyle";
+import { CATEGORY_STYLE, rgba } from "./categoryStyle";
 import { getDemoZoneById } from "./demoZones";
-
-function rgba([r, g, b, a]: RGBA): string {
-  return `rgba(${r}, ${g}, ${b}, ${(a / 255).toFixed(2)})`;
-}
 
 /**
  * Reference card for the selected advisory zone (ADR 0008): reference language only,

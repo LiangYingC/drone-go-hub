@@ -3,6 +3,11 @@ import type { AdvisoryCategory } from "./types";
 /** deck.gl colour as [r, g, b, a], each channel 0–255. */
 export type RGBA = [number, number, number, number];
 
+/** CSS colour string for an RGBA tuple, so DOM UI can reuse the map palette. */
+export function rgba([r, g, b, a]: RGBA): string {
+  return `rgba(${r}, ${g}, ${b}, ${(a / 255).toFixed(2)})`;
+}
+
 /**
  * Per-category fill/line colours for the advisory overlay.
  *
