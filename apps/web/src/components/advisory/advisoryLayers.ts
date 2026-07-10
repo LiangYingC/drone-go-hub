@@ -11,8 +11,8 @@ export interface AdvisoryLayersOptions {
 }
 
 /**
- * deck.gl layers for the advisory regulatory overlay (ADR 0003 mount point in MapView).
- * V0: one GeoJsonLayer over disclosed demo data, coloured by category.
+ * deck.gl layers for the advisory regulatory overlay, mounted by MapView's
+ * DeckGLOverlay. V0: one GeoJsonLayer over disclosed demo data, coloured by category.
  */
 export function buildAdvisoryLayers({
   onZoneClick,

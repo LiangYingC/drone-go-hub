@@ -21,8 +21,8 @@ export const CATEGORY_STYLE: Record<AdvisoryCategory, { fill: RGBA; line: RGBA }
 
 /**
  * Selected-zone emphasis: same category hue, stronger fill alpha, opaque thicker
- * outline. Selection is visual emphasis only — it must not read as a different
- * verdict about the zone (ADR 0008), hence no colour change.
+ * outline. The map never renders a go/no-go verdict, so a selected zone must not
+ * change colour (which could read as a different judgement) — it only gains contrast.
  */
 const SELECTED_FILL_ALPHA = 140; // above every category default (60–80)
 const LINE_WIDTH_PX = 1.5;

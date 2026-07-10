@@ -60,7 +60,7 @@ describe("zone selection styling", () => {
       const base = CATEGORY_STYLE[category];
       const fill = zoneFillColor(category, true);
       const line = zoneLineColor(category, true);
-      // ADR 0008: selection is emphasis, not a verdict — hue must not change.
+      // Selection is emphasis, not a verdict — hue must not change, only alpha.
       expect(fill.slice(0, 3)).toEqual(base.fill.slice(0, 3));
       expect(line.slice(0, 3)).toEqual(base.line.slice(0, 3));
       expect(fill[3]).toBeGreaterThan(base.fill[3]);
