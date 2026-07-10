@@ -31,7 +31,10 @@ export function buildAdvisoryLayers({
       pickable: true,
       onClick: (info) => {
         const id = info.object?.properties?.id;
-        if (id) onZoneClick?.(id);
+        if (!id) return false;
+        onZoneClick?.(id);
+        // Mark handled so Deck's root onClick (deselect-on-empty in MapView) skips it.
+        return true;
       },
       // Accessors close over selectedZoneId; deck re-evaluates them only when told to.
       updateTriggers: {

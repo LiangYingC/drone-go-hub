@@ -14,6 +14,7 @@ import { useSelectedZoneId, useViewState } from "@/store/selectors";
  */
 function DeckGLOverlay() {
   const selectZone = useAppStore((s) => s.selectZone);
+  const clearSelection = useAppStore((s) => s.clearSelection);
   const selectedZoneId = useSelectedZoneId();
   const overlay = useControl(() => new MapboxOverlay({ interleaved: DECK_INTERLEAVED }));
 
@@ -22,8 +23,13 @@ function DeckGLOverlay() {
   useEffect(() => {
     overlay.setProps({
       layers: buildAdvisoryLayers({ onZoneClick: selectZone, selectedZoneId }),
+      // Deck's root onClick only fires when no layer handled the click
+      // (the zone layer returns true), i.e. clicks on empty map area.
+      onClick: (info) => {
+        if (!info.layer) clearSelection();
+      },
     });
-  }, [overlay, selectZone, selectedZoneId]);
+  }, [overlay, selectZone, clearSelection, selectedZoneId]);
 
   return null;
 }
