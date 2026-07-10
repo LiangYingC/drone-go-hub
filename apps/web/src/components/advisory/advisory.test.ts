@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { LEGEND_CATEGORIES } from "./AdvisoryLegend";
 import { CATEGORY_LABEL } from "./categoryLabel";
 import { CATEGORY_STYLE, zoneFillColor, zoneLineColor, zoneLineWidth } from "./categoryStyle";
 import { DEMO_ADVISORY_ZONES, getDemoZoneById } from "./demoZones";
@@ -44,6 +45,10 @@ describe("advisory category presentation", () => {
     for (const category of ALL_CATEGORIES) {
       expect(CATEGORY_LABEL[category]).toBeTruthy();
     }
+  });
+
+  it("shows every category in the legend", () => {
+    expect([...LEGEND_CATEGORIES].sort()).toEqual([...ALL_CATEGORIES].sort());
   });
 });
 
