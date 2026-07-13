@@ -1,6 +1,6 @@
 # Regulatory-layer data sourcing strategy (regulation-driven)
 
-_Last updated: 2026-06-28 · Translated from the canonical Chinese ([../0010-data-regulatory-layers-sourcing.md](../0010-data-regulatory-layers-sourcing.md)); the Chinese version is authoritative._
+_Last updated: 2026-07-13 · Translated from the canonical Chinese ([../0010-data-regulatory-layers-sourcing.md](../0010-data-regulatory-layers-sourcing.md)); the Chinese version is authoritative._
 
 ## Context
 
@@ -18,7 +18,7 @@ dronegohub's core is to show Taiwan's drone "regulatory layers" (`regulatoryLaye
 
 The CAA [RPA management system](https://drone.caa.gov.tw/) (hereafter the "CAA interactive map") is primarily an **interactive online query** (click the map for details); **some announcements (e.g. city/county government notices) include PDF attachments (notice text / a schematic map)**, but there is **no public API and no bulk or GIS-ready vector download (SHP/KMZ/GeoJSON)**; request [#136966](https://data.gov.tw/suggests/136966) ("release no-fly/restricted zones as SHP/KMZ"), aimed at that gap, was **closed as released in 2025-06**, and the CAA has published GIS-friendly files for several layers on the open-data platform and its own site:
 
-- **Restricted zones**: [Taipei FIR restricted-airspace map data (49021)](https://data.gov.tw/dataset/49021) (CAA, Government Open Data License v1); downloadable as **KML / coordinate Excel / PDF** from the [CAA site (a=243)](https://www.caa.gov.tw/Article.aspx?a=243&lang=1). The current authoritative list is the **24 R-areas** in [eAIP `ENR 5.1`](https://ais.caa.gov.tw/eaip/AIRAC%20AIP%20AMDT%2002-26_2026_05_14/eAIP/RC-ENR%205.1-zh-TW.html) (with coordinates).
+- **Restricted zones**: [Taipei FIR restricted-airspace map data (49021)](https://data.gov.tw/dataset/49021) (CAA, Government Open Data License v1); downloadable as **KML / coordinate Excel / PDF** from the [CAA site (a=243)](https://www.caa.gov.tw/Article.aspx?a=243&lang=1). The current authoritative list is the **27 R-areas plus the 2 circular Dongsha/Nansha restricted areas** in [eAIP `ENR 5.1`](https://ais.caa.gov.tw/eaip/AIRAC%20AIP%20AMDT%2002-26_2026_05_14/eAIP/RC-ENR%205.1-zh-TW.html) (with coordinates; recounted row by row against AMDT 02-26, correcting this document's earlier count of “24”).
 - **Airport / airfield "certain distance"**: [Airport-vicinity hazardous-object range map data (45701)](https://data.gov.tw/dataset/45701) (under Civil Aviation Act **Art. 34**, CAA, Open Data License v1; KML / SHP / coordinate Excel etc.), which **explicitly covers "aerial cameras and remote-controlled unmanned aircraft."** The [99-13 explainer](https://www.caa.gov.tw/Article.aspx?a=2429&lang=1) confirms the **99-13 airport "certain distance" adopts the Art. 34 range** (an arc of 5 km radius ±35° from each runway end; a 1 km circle for airfields), so 45701 is this layer's dataset.
 - **National parks**: [National park GIS layer compilation (174421)](https://data.gov.tw/dataset/174421) (MOI National Parks Administration, SHP/WMS, Open Data License v1), including boundary layers.
 - **No-fly zones**: a statutory category, but the current eAIP `ENR 5.1` lists prohibited (P) and danger (D) areas as **NIL** (none standing), so there is **no geographic data yet**.
