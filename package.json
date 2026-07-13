@@ -12,8 +12,9 @@
     "dev": "pnpm --filter @dronegohub/web dev",
     "build": "pnpm --filter @dronegohub/web build",
     "preview": "pnpm --filter @dronegohub/web preview",
-    "typecheck": "pnpm --filter @dronegohub/web typecheck",
-    "test": "pnpm --filter @dronegohub/web test",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test",
+    "etl:restricted-zone": "pnpm --filter @dronegohub/etl etl:restricted-zone",
     "lint": "biome check .",
     "format": "biome check --write ."
   },
