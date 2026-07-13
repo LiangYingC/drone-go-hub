@@ -1,6 +1,6 @@
 # 禁限航圖資的資料來源策略（法規驅動）
 
-_最後更新：2026-06-28_
+_最後更新：2026-07-13_
 
 ## Context
 
@@ -18,7 +18,7 @@ dronegohub 的核心是把台灣無人機的「禁限航圖資」（`regulatoryL
 
 民航局[遙控無人機管理資訊系統](https://drone.caa.gov.tw/)（下稱「CAA 互動地圖」）以**線上互動查詢**為主（點圖看詳情）；**部分公告（如縣市政府公告）附 PDF（公告文／示意圖）下載**，但**無公開 API、亦無整批或 GIS 可直接套疊的向量檔（SHP／KMZ／GeoJSON）**；針對此缺口的[建議案 136966](https://data.gov.tw/suggests/136966)（「請開放禁限航 SHP／KMZ」）已於 **2025-06 結案（有開放）**，民航局已將部分圖層的 GIS 友善檔上架開放資料平臺與局網：
 
-- **限航區**：[臺北飛航情報區限航區範圍圖資（49021）](https://data.gov.tw/dataset/49021)（民航局、政府資料開放授權第 1 版）；可於[局網 a=243](https://www.caa.gov.tw/Article.aspx?a=243&lang=1) 下載 **KML／座標 Excel／PDF**。現行權威清單為 [eAIP `ENR 5.1`](https://ais.caa.gov.tw/eaip/AIRAC%20AIP%20AMDT%2002-26_2026_05_14/eAIP/RC-ENR%205.1-zh-TW.html) 之 **24 個 R 區**（含座標）。
+- **限航區**：[臺北飛航情報區限航區範圍圖資（49021）](https://data.gov.tw/dataset/49021)（民航局、政府資料開放授權第 1 版）；可於[局網 a=243](https://www.caa.gov.tw/Article.aspx?a=243&lang=1) 下載 **KML／座標 Excel／PDF**。現行權威清單為 [eAIP `ENR 5.1`](https://ais.caa.gov.tw/eaip/AIRAC%20AIP%20AMDT%2002-26_2026_05_14/eAIP/RC-ENR%205.1-zh-TW.html) 之 **27 個 R 區＋東沙、南沙 2 個圓形限航區**（含座標；依 AMDT 02-26 逐列清點，修正本文早先「24 個」之計數）。
 - **機場／飛行場一定距離**：[機場四周禁止施放有礙飛航安全物體範圍圖資（45701）](https://data.gov.tw/dataset/45701)（依民航法 **§34**、民航局、開放授權第 1 版；KML／SHP／座標 Excel 等），**明文涵蓋「空拍機及遙控無人機」**；[99-13 說明](https://www.caa.gov.tw/Article.aspx?a=2429&lang=1) 證實 **99-13 機場「一定距離」即採 §34 範圍**（跑道端半徑 5 公里、左右各 35° 之弧；飛行場為 1 公里圓），故 45701 即此層對應圖資。
 - **國家公園**：[國家公園地理資訊圖層彙整（174421）](https://data.gov.tw/dataset/174421)（內政部國家公園署、SHP／WMS、開放授權第 1 版），含範圍圖。
 - **禁航區**：為法定類別，但現行 eAIP `ENR 5.1` 之禁航區（P）、危險區（D）均為 **NIL**（無常設區），**暫無地理資料**。
